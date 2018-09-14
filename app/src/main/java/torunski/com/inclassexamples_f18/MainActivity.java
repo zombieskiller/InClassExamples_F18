@@ -15,19 +15,15 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
         final EditText input =  (EditText)findViewById(R.id.editText);
-        Button b1 = (Button)findViewById(R.id.bottom);
+        Button b1 = (Button)findViewById(R.id.button1);
         Button b2 = (Button)findViewById(R.id.button2);
-        try {
+
             b1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    input.setText("You clicked button1");
-                }
-            });
-        }catch(NullPointerException npe)
-        {
-            Log.i("Crash", npe.getMessage());
-        }
+                                      @Override
+                                      public void onClick(View v) {
+                                          input.setText("You clicked button1");
+                                      }});
+
         b2.setOnClickListener( e -> input.setText("You clicked button 2") );
     }
 
