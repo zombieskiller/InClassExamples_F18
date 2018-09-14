@@ -17,7 +17,6 @@ public class MainActivity extends Activity {
         final EditText input =  (EditText)findViewById(R.id.editText);
         Button b1 = (Button)findViewById(R.id.bottom);
         Button b2 = (Button)findViewById(R.id.button2);
-
         try {
             b1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -30,5 +29,10 @@ public class MainActivity extends Activity {
             Log.i("Crash", npe.getMessage());
         }
         b2.setOnClickListener( e -> input.setText("You clicked button 2") );
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 }
