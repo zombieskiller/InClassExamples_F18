@@ -1,7 +1,9 @@
 package torunski.com.inclassexamples_f18;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.icu.text.IDNA;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,9 +23,11 @@ public class MainActivity extends Activity {
 
         EditText et = (EditText)findViewById(R.id.editText);
 
+        SharedPreferences prefs = getSharedPreferences("MyNewSaveFile", Context.MODE_PRIVATE);
+        String userString = prefs.getString("UserInput","No Value Exisis");
 
+        et.setText(userString);
         Button b1 = (Button)findViewById(R.id.button1);
-
         Button b2 = (Button)findViewById(R.id.button2);
 
         final TextView greeting = (TextView)findViewById(R.id.greeting);
@@ -33,6 +37,12 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     String input = et.getText().toString();
+
+                    SharedPreferences.Editor edit = prefs.edit();
+                    edit.putString("UserInput", input);
+
+                    edit.putBoolean("Hello", false);
+                    edit.commit();//write to disk
 
                     Intent nextScreen = new Intent(MainActivity.this, InformationActivity.class);
                     nextScreen.putExtra("InputText", input);
