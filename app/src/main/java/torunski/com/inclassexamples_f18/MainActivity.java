@@ -3,6 +3,7 @@ package torunski.com.inclassexamples_f18;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,10 +27,22 @@ public class MainActivity extends Activity {
 
         EditText et = (EditText)findViewById(R.id.editText);
 
+        SharedPreferences prefs = getSharedPreferences("MySavedData", Context.MODE_PRIVATE);
+        String savedName = prefs.getString("UserName", "Welcome to my application");
+
+        et.setText(savedName);
+
         final TextView greeting = (TextView)findViewById(R.id.greeting);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                SharedPreferences.Editor edit = prefs.edit();
+                edit.putString("UserName", et.getText().toString());
+
+                edit.commit(); //this writes to disk
+
+
                 greeting.setText("You clicked button 1");
                 Intent nextScreen = new Intent(ctx, ListScreen.class  );
                 nextScreen.putExtra("text", et.getText().toString());
