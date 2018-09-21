@@ -27,9 +27,9 @@
         android:text="Button 2" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:text="radio button" />
+        android:hint="type here" />
 
 </LinearLayout>
