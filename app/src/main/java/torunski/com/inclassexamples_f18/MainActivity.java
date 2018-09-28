@@ -9,9 +9,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
@@ -72,4 +75,6 @@ public class MainActivity extends Activity {
             Log.d("RESPONSE", res);
         }
     }
+
+
 }
